@@ -1,6 +1,10 @@
-const { expect, assert } = require('chai');
-const { testOptional, checkForThrowingErrors, CONSTANTS } = require('../extensions/index.js');
-const { chainMaker } = require('../src/simple-chain.js');
+const { expect, assert } = require("chai");
+const {
+  testOptional,
+  checkForThrowingErrors,
+  CONSTANTS,
+} = require("../extensions/index.js");
+const { chainMaker } = require("../src/simple-chain.js");
 
 const { CORRECT_RESULT_MSG } = CONSTANTS;
 
@@ -8,7 +12,7 @@ it.optional = testOptional;
 
 Object.freeze(expect);
 Object.freeze(assert);
-
+// prettier-ignore
 describe('Make chain!', () => {
     //Presence requirement
     describe('variable presence', () => {
