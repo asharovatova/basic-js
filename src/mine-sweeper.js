@@ -30,7 +30,7 @@ function minesweeper(matrix) {
     m.push([]);
     for (let j = 0; j < matrix[0].length; j += 1) {
       let item = 0;
-      console.log("i", i, "j", j);
+
       if (i > 0 && j > 0 && matrix[i - 1][j - 1]) item += 1;
       if (i > 0 && matrix[i - 1][j]) item += 1;
       if (i > 0 && matrix[i - 1][j + 1]) item += 1;
@@ -39,6 +39,7 @@ function minesweeper(matrix) {
       if (i < matrix.length - 1 && matrix[i + 1][j - 1]) item += 1;
       if (i < matrix.length - 1 && matrix[i + 1][j]) item += 1;
       if (i < matrix.length - 1 && matrix[i + 1][j + 1]) item += 1;
+
       m[i].push(item);
     }
   }
