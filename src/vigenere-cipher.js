@@ -27,6 +27,7 @@ class VigenereCipheringMachine {
   abc = "abcdefghijklmnopqrstuvwxyz";
 
   encrypt(message, key) {
+    // console.debug("ENCRYPT", this.direct, message, key);
     if (!message || !key) {
       throw new Error("Incorrect arguments!");
     }
@@ -62,6 +63,7 @@ class VigenereCipheringMachine {
   }
 
   decrypt(encryptedMessage, key) {
+    // console.debug("DECRYPT", this.direct, encryptedMessage, key);
     if (!encryptedMessage || !key) {
       throw new Error("Incorrect arguments!");
     }

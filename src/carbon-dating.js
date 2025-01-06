@@ -27,9 +27,8 @@ function dateSample(sampleActivity) {
     return false;
   }
 
-  let age = Math.ceil(
-    Math.log(MODERN_ACTIVITY / +sampleActivity) / HALF_LIFE_PERIOD
-  );
+  let k = Math.log(2) / HALF_LIFE_PERIOD;
+  let age = Math.ceil(Math.log(MODERN_ACTIVITY / +sampleActivity) / k);
   console.debug("sample", sampleActivity, "age", age);
 
   return age;
