@@ -56,15 +56,45 @@ class VigenereCipheringMachine {
     });
 
     if (!this.direct) res = res.split("").reverse().join("");
-    return res.toUpperCase();
+    return this.direct
+      ? res.toUpperCase()
+      : res.split("").reverse().join("").toUpperCase();
   }
 
   decrypt(encryptedMessage, key) {
     if (!encryptedMessage || !key) {
       throw new Error("Incorrect arguments!");
     }
-    let res = encryptedMessage.toUpperCase();
-    return res;
+    let mesStr = encryptedMessage.toLowerCase();
+    let keyStr = key
+      .padEnd(mesStr.split(" ").join("").length, key)
+      .toLowerCase();
+    mesStr.split("").forEach((el, i) => {
+      if (el === " ") {
+        keyStr = keyStr.split("");
+        keyStr.splice(i, 0, " ");
+        keyStr = keyStr.join("");
+      }
+    });
+
+    let res = "";
+
+    mesStr.split("").forEach((char, i) => {
+      if (this.abc.includes(char)) {
+        let mesNum = this.abc.indexOf(char);
+        let keyNum = this.abc.indexOf(keyStr[i]);
+        let resNum = (mesNum - keyNum) % 26;
+        if (resNum < 0) {
+          resNum = resNum + 26;
+        }
+        res += this.abc[resNum];
+      } else {
+        res += char;
+      }
+    });
+
+    if (!this.direct) res = res.split("").reverse().join("");
+    return res.toUpperCase();
   }
 }
 
